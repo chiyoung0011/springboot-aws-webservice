@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.1.9.RELEASE'
+        springBootVersion = '2.5.5'
     }
     repositories {
         mavenCentral()
@@ -17,12 +17,26 @@ apply plugin: 'io.spring.dependency-management'
 
 group 'com.springboot.aws.webservice'
 version '1.0-SNAPSHOT'
+sourceCompatibility = '1.11'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compileOnly('org.springframework.boot:spring-boot-starter-web:2.5.5')
-    testCompileOnly('org.springframework.boot:spring-boot-starter-test:2.5.5')
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.5'
+    implementation 'org.springframework.boot:spring-boot-starter-jetty'
+    implementation 'org.projectlombok:lombok:1.18.20'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.session:spring-session-jdbc'
+    runtimeOnly 'com.h2database:h2'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.5'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+    useJUnitPlatform()
 }
